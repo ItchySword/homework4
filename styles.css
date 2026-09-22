@@ -2,13 +2,18 @@ html{
     background-color: darkgreen;
 }
 
+body{
+    margin: 0;
+    width: 100%;
+}
+
 .container{
     background-color: rgb(119, 223, 166);
     display: grid;
     gap: 5px;
-    grid-template-columns: 300px auto;
+    grid-template-columns: 30% auto;
     grid-template-rows: auto auto 200px;
-        /* Unvisited link */
+    /* Unvisited link */
     a:link{
         color: black;
     }
@@ -24,21 +29,43 @@ html{
 
 div{
     border: 2px solid black;
-    padding: 40px;
-    font-size: xx-large;
-    width: 85vw;
+    display: flex;
+    justify-content: center;
+    padding: 1vw;
+    flex-wrap: wrap;
+    font-size: 3vw;
+    box-shadow: 2px 2px 5px #888888;
 }
 
-.header{
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    row-gap: 5px;
-    font-size: x-large;
-    background-color: rgb(183, 241, 183);
+
+nav{
+    font-size: 3vw;
+    border: 2px solid black;
 }
+
+/* #about-me,
+#resume{
+    padding: 16px;
+} */
+
 .header{
     grid-area: header;
+    display: flex;
+    position: sticky;
+    top: 0;
+    max-height: 500px;
+    row-gap: 1px;
+    align-items: center;
+    flex-direction: column;
+    font-size: 3vw;
+    background-color: rgb(183, 241, 183);
+    z-index: 100;
+    h1{
+        margin-bottom: 0%;
+    }
+    h3{
+        margin-bottom: 0%;
+    }
 }
 .sidebar{
     grid-area: sidebar;
@@ -55,21 +82,48 @@ div{
 }
 #skills{
     display: flex;
+    transition: transform 0.5s ease-in-out;
 }
+#skills li:hover{
+    text-shadow: 2px 2px 4px gray;
+    transform: skewX(1deg) scale(1.03);
+}
+
 #projects{
     display: flex;
+    float: left;
     justify-content: center;
+    transition: transform 0.5s ease-in-out;
+}
+#projects img:hover{
+    opacity: 75%;
+    transform: scale(1.05);
 }
 .main-content{
     display: flex;
     flex-direction: column;
     justify-content: center;
-    width: 100%;
 }
 .main-content{
     grid-area: main-content;
     background-color: rgb(183, 241, 183);
 }
+
+#resume{
+    transition: transform 0.5s ease-in-out;
+    a{
+        display: inline-block;
+    }
+    a:link{
+        border: 2px solid green;
+        border-radius: 5px 5px;
+    }
+    a:hover{
+        text-shadow: 2px 2px 4px gray;
+        transform: skewX(-5deg) scale(1.05);
+    }
+}
+
 /* footer with content */
 .footer{
     display: flex;
@@ -104,11 +158,12 @@ div{
             "footer";
     }
     div{
-        display: inline-block;
-        border: 2px solid black;
-        padding: 1vw;
+        display: flex;
+        border: none;
+        padding: 0.5vw;
         height: auto;
         width: auto;
+        flex-wrap: wrap;
         font-size: 4vw;
     }
     nav{
@@ -125,28 +180,45 @@ div{
     .container{
         display: grid;
         grid-template-columns: 1fr;
-        grid-template-rows: auto auto auto;
+        grid-template-rows: auto auto auto auto;
         grid-template-areas: 
             "header"
+            "sidebar"
             "main-content"
             "footer";
-    }    
+    }
     div{
-        border: 2px solid black;
+        display: flex;
+        border: none;
+        padding: 1vw;
+        height: auto;
+        width: auto;
+        flex-wrap: wrap;
         font-size: 5vw;
-        width: 85vw;
+    }
+    nav{
+        font-size: 5vw;
+    }
+    .sidebar{
+        flex-direction: row;
+        justify-content: center;
+        flex-wrap: wrap;
     }
 }
 /* desktop */
 @media (min-width: 769px) and (max-width: 1024px){
     .container{
         display: grid;
-        grid-template-columns: 200px auto;
-        grid-template-rows: auto auto auto;
-        grid-template-areas: 
+        row-gap: 5px;
+        grid-template-columns: 30% auto;
+        grid-template-rows: auto auto 200px;
+        grid-template-areas:
         "header header"
         "sidebar main-content"
         "footer footer";
+    }
+    div{
+        padding: 0.5vw;
     }
 } 
     
